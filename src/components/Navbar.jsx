@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import sunIcon from '../assets/sun.svg';
+import moonIcon from '../assets/moon.svg';
 
 const Navbar = () => {
   const [theme, setTheme] = useState('dark');
@@ -30,9 +32,9 @@ const Navbar = () => {
 
         <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
           {theme === 'dark' ? (
-            <img src="/src/assets/sun.svg" alt="Light Mode" width="24" height="24" />
+            <img src={sunIcon} alt="Light Mode" width="24" height="24" />
           ) : (
-            <img src="/src/assets/moon.svg" alt="Dark Mode" width="24" height="24" />
+            <img src={moonIcon} alt="Dark Mode" width="24" height="24" />
           )}
         </button>
       </div>

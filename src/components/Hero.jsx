@@ -1,6 +1,7 @@
 import linkedinIcon from '../assets/linkedin.svg';
 import githubIcon from '../assets/github.svg';
 import facebookIcon from '../assets/facebook.svg';
+import profilePic from '../assets/profile.jpg';
 
 const Hero = () => {
   return (
@@ -40,7 +41,7 @@ const Hero = () => {
             background: 'linear-gradient(135deg, #2A2A2A, #1A1A1A)',
             position: 'relative'
           }}>
-            <img src="/profile.jpg" alt="Duc Anh Ngo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={profilePic} alt="Duc Anh Ngo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>
 
