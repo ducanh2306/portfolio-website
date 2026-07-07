@@ -2,7 +2,7 @@
   const projectList = [
     { 
       title: 'Dashboard of Airport Authority', 
-      desc: 'Interactive Power BI dashboard analyzing airport operations and metrics, designed to empower business decisions with real-time insights.', 
+      desc: 'Interactive Power BI dashboard and data pre-processing in Excel to analyze airport KPIs including delays, cancellations, and on-time performance. Features time-series trends and map visualizations with source-destination drill-throughs, reducing operational review time by ~40%.', 
       tech: 'Power BI, Data Analysis',
       liveLink: 'https://app.powerbi.com/reportEmbed?reportId=88a0b800-97f9-4cf4-b8c5-423228bb4db2&autoAuth=true&ctid=ec1bd924-0a6a-4aa9-aa89-c980316c0449'
     },
