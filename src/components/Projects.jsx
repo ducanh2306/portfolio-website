@@ -6,8 +6,23 @@
       tech: 'Power BI, Data Analysis',
       liveLink: 'https://app.powerbi.com/reportEmbed?reportId=88a0b800-97f9-4cf4-b8c5-423228bb4db2&autoAuth=true&ctid=ec1bd924-0a6a-4aa9-aa89-c980316c0449'
     },
-    { title: 'SmartSpend', desc: 'A Django web app and Python data analysis study evaluating personal spending behavior against the 50/30/20 budget rule using a 3,000 record dataset.', tech: 'Django, Python, Data Analysis', liveLink: 'https://income-tracker-7xc2.onrender.com/' },
-    { title: 'Portfolio Website', desc: 'Modern, performant, and fully animated personal portfolio using React and Vite.', tech: 'React, CSS, Vite' },
+    { 
+      title: 'SmartSpend', 
+      desc: 'A Django web app and Python data analysis study evaluating personal spending behavior against the 50/30/20 budget rule using a 3,000 record dataset.', 
+      tech: 'Django, Python, Data Analysis', 
+      liveLink: 'https://income-tracker-7xc2.onrender.com/' 
+    },
+    { 
+      title: 'Hospital Operation Dashboard', 
+      desc: 'A role-based Power BI dashboard built on a normalized 11-table SQL Server relational database. Features enforced keys and constraints to prevent data duplication, utilizing 15 custom business queries to deliver accurate reporting KPIs and actionable operational insights to healthcare stakeholders.', 
+      tech: 'Power BI, SQL Server, Data Modeling', 
+      liveLink: 'https://app.powerbi.com/groups/me/reports/04638c98-1cee-4ae9-953d-36f317568b67?ctid=ec1bd924-0a6a-4aa9-aa89-c980316c0449&pbi_source=linkShare' 
+    },
+    { 
+      title: 'Portfolio Website', 
+      desc: 'Modern, performant, and fully animated personal portfolio using React and Vite.', 
+      tech: 'React, CSS, Vite' 
+    },
   ];
 
   return (
