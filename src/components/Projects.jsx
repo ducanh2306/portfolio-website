@@ -1,4 +1,8 @@
-﻿const Projects = () => {
+﻿import React, { useRef } from 'react';
+
+const Projects = () => {
+  const sliderRef = useRef(null);
+
   const projectList = [
     { 
       title: 'Dashboard of Airport Authority', 
@@ -25,24 +29,51 @@
     },
   ];
 
+  const slideLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft -= 380; // card width + gap
+    }
+  };
+
+  const slideRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft += 380;
+    }
+  };
+
   return (
     <section id="projects" style={{ padding: '100px 0', backgroundColor: 'var(--bg-color)', position: 'relative', zIndex: 1 }}>
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '50px' }}>
-          Featured <span style={{ color: 'var(--accent-color)' }}>Projects</span>
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', width: '100%' }}>
+      <div className="container">
+        <div className="section-header">
+          <div style={{ textAlign: 'left' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '10px' }}>
+              Featured <span style={{ color: 'var(--accent-color)' }}>Projects</span>
+            </h2>
+            <div style={{ width: '50px', height: '4px', backgroundColor: 'var(--accent-color)', marginBottom: '15px' }}></div>
+            <p style={{ fontSize: '0.9rem', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
+              Check out my professional projects
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <button className="slider-btn" onClick={slideLeft} aria-label="Previous Project">&larr;</button>
+            <button className="slider-btn" onClick={slideRight} aria-label="Next Project">&rarr;</button>
+          </div>
+        </div>
+
+        <div className="slider-container" ref={sliderRef}>
           {projectList.map((p, i) => (
-             <div key={i} className="project-card" style={{ display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)', marginBottom: '15px' }}>{p.title}</h3>
-              <p style={{ color: 'var(--text-primary)', opacity: 0.8, marginBottom: '20px', lineHeight: 1.6, flexGrow: 1 }}>{p.desc}</p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
-                <span style={{ fontSize: '0.9rem', color: 'var(--accent-color)', fontWeight: 600 }}>{p.tech}</span>
-                {p.liveLink && (
-                  <a href={p.liveLink} target="_blank" rel="noopener noreferrer" className="btn" style={{ padding: '8px 15px', fontSize: '0.9rem' }}>
-                    Live Demo
-                  </a>
-                )}
+             <div key={i} className="slider-item-project">
+               <div className="project-card" style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)', marginBottom: '15px' }}>{p.title}</h3>
+                <p style={{ color: 'var(--text-primary)', opacity: 0.8, marginBottom: '20px', lineHeight: 1.6, flexGrow: 1 }}>{p.desc}</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
+                  <span style={{ fontSize: '0.9rem', color: 'var(--accent-color)', fontWeight: 600 }}>{p.tech}</span>
+                  {p.liveLink && (
+                    <a href={p.liveLink} target="_blank" rel="noopener noreferrer" className="btn" style={{ padding: '8px 15px', fontSize: '0.9rem' }}>
+                      Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}

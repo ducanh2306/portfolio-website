@@ -1,7 +1,8 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useRef } from 'react';
 
 const Certificates = () => {
   const [activeCert, setActiveCert] = useState(null);
+  const sliderRef = useRef(null);
 
   const certificateList = [
     {
@@ -102,34 +103,59 @@ const Certificates = () => {
     }
   ];
 
+  const slideLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft -= 350; // card width + gap
+    }
+  };
+
+  const slideRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft += 350;
+    }
+  };
+
   return (
     <section id="certificates" className="certificates-section">
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '50px', textAlign: 'center' }}>
-          Licenses & <span style={{ color: 'var(--accent-color)' }}>Certifications</span>
-        </h2>
+      <div className="container">
+        <div className="section-header">
+          <div style={{ textAlign: 'left' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '10px' }}>
+              Licenses & <span style={{ color: 'var(--accent-color)' }}>Certifications</span>
+            </h2>
+            <div style={{ width: '50px', height: '4px', backgroundColor: 'var(--accent-color)', marginBottom: '15px' }}></div>
+            <p style={{ fontSize: '0.9rem', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
+              View my licenses & certifications
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <button className="slider-btn" onClick={slideLeft} aria-label="Previous Certificate">&larr;</button>
+            <button className="slider-btn" onClick={slideRight} aria-label="Next Certificate">&rarr;</button>
+          </div>
+        </div>
         
-        <div className="certificates-grid">
+        <div className="slider-container" ref={sliderRef}>
           {certificateList.map((c, i) => (
-            <div 
-              key={i} 
-              className="certificate-card" 
-              style={{ cursor: 'pointer' }}
-              onClick={() => setActiveCert(c)}
-            >
-              <div>
-                <div className="certificate-header">
-                  <span style={{ fontSize: '2rem' }}>{c.logo}</span>
-                  <span className="certificate-date">{c.date}</span>
+            <div key={i} className="slider-item-cert">
+              <div 
+                className="certificate-card" 
+                style={{ cursor: 'pointer', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+                onClick={() => setActiveCert(c)}
+              >
+                <div>
+                  <div className="certificate-header">
+                    <span style={{ fontSize: '2rem' }}>{c.logo}</span>
+                    <span className="certificate-date">{c.date}</span>
+                  </div>
+                  <h3 className="certificate-title">{c.title}</h3>
+                  <p className="certificate-issuer">{c.issuer}</p>
                 </div>
-                <h3 className="certificate-title">{c.title}</h3>
-                <p className="certificate-issuer">{c.issuer}</p>
-              </div>
-              <div className="certificate-footer" onClick={(e) => e.stopPropagation()}>
-                <span className="certificate-id">{c.id}</span>
-                <button className="certificate-btn" onClick={() => setActiveCert(c)}>
-                  View Certificate
-                </button>
+                <div className="certificate-footer" onClick={(e) => e.stopPropagation()}>
+                  <span className="certificate-id">{c.id}</span>
+                  <button className="certificate-btn" onClick={() => setActiveCert(c)}>
+                    View Certificate
+                  </button>
+                </div>
               </div>
             </div>
           ))}
